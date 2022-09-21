@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Teleport
+  - Item
   layers:
   - Default
   - TransparentFX
@@ -41,4 +42,13 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Front
+    uniqueID: 142044325
+    locked: 0
+  - name: Middle
+    uniqueID: 3766189955
+    locked: 0
+  - name: Back
+    uniqueID: 3472000441
     locked: 0
