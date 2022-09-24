@@ -4,19 +4,29 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 public class TransitionManager : Singleton<TransitionManager>
 {
-    private bool isFade;
+    [SceneName] public string startScene;
     public CanvasGroup fadeCanvasGroup;
     public float fadeDuration; 
+    private bool isFade;
+
+    private void Start() {
+        StartCoroutine(TransitionToScence(string.Empty,startScene));
+    }
+
    public void Transition(string from,string to)
    {
         if(!isFade)
             StartCoroutine(TransitionToScence(from,to));
    }
+
     private IEnumerator TransitionToScence(string from,string to)
     {
         yield return Fade(1);
+        if(from != string.Empty){
+         EventHandler.CallBefofeSceneUnloadUIEvent();
         //卸載場景
-        yield return SceneManager.UnloadSceneAsync(from);
+         yield return SceneManager.UnloadSceneAsync(from);
+        }
         //重新載入場景
         yield return SceneManager.LoadSceneAsync(to,LoadSceneMode.Additive);
 
@@ -24,6 +34,7 @@ public class TransitionManager : Singleton<TransitionManager>
         Scene newScene = SceneManager.GetSceneAt(SceneManager.sceneCount-1);
         SceneManager.SetActiveScene(newScene);    
 
+        EventHandler.CallAfterSceneLoadedEvent();
         yield return Fade(0);    
     }  
 
