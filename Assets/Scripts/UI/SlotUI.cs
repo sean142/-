@@ -18,6 +18,6 @@ public class SlotUI : MonoBehaviour
   }
 
   public void SetEmpty(){
-    this.gameObject.SetActive(true);
+    this.gameObject.SetActive(false);
   }
 }
