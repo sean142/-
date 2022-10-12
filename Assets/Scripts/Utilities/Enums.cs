@@ -1,4 +1,4 @@
 public enum ItemName
 {
-    Nore,Key,Ticket
+    None,Key,Ticket
 }

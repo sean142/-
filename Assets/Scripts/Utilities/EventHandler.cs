@@ -21,4 +21,24 @@ public static class EventHandler
    public static void CallAfterSceneLoadedEvent(){
         AfterSceneLoadedEvent?.Invoke();
    }
+
+   public static event Action<ItemDetails,bool> ItemSelectedEvent;
+   public static void CallItemSelectedEvent(ItemDetails itemDetails,bool isSelected){
+     ItemSelectedEvent?.Invoke(itemDetails,isSelected);
+   }
+
+   public static event Action<ItemName> ItemUsedEvent;
+   public static void CallItemUsedEvent(ItemName itemName){
+     ItemUsedEvent?.Invoke(itemName);
+   }
+
+   public static event Action<int> ChangItemEvent;
+   public static void CallChangItemEvemt(int index){
+     ChangItemEvent?.Invoke(index);
+   }
+
+   public static event Action<string> ShowDialogeEvent;
+   public static void CallShowDialogeEvent(string dialoge){
+    ShowDialogeEvent?.Invoke(dialoge);
+   }
 }
